@@ -1,1 +1,73 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Bad+Script&display=swap');
+
+@mixin box-size {
+    height: 300px;
+    width: 300px;
+}
+
+@mixin flipped {
+    transform: rotateY(180deg);
+}
+
+.no-outline {
+    outline: none !important;
+}
+
+.box-editable {
+    height: 100%;
+    &:focus {
+        height: auto;
+    }
+}
+
+.upload-box {
+    @include box-size;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.actable {
+    cursor: pointer;
+    &:hover {
+        box-shadow: black 0px 0px 10px;
+    }
+}
+
+.flipping-perspective {
+    position: relative;
+    perspective: 600px;
+    .flipping-container {
+        @include box-size;
+        position: relative;    
+        transition: transform .5s 0s ease-out;    
+        transform-style: preserve-3d;
+        .flipping-side {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            backface-visibility: hidden;     
+            box-shadow: #a5a5a5 0 0 10px;
+            padding: 10px;   
+        }
+    
+        .flipping-back {
+            @include flipped;
+            font-family: 'Bad Script', cursive;
+            text-align: center;
+        }
+    
+        &.flipping-turn {
+            @include flipped;
+        }
+
+    }
+    &:hover {
+        .flipping-container {
+            @include flipped;
+        }
+    }
+}
