@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { API_ROOT } from '../src/const';
-import FlippingCard from './FlippingCard';
 
 const ALLOWED_TYPES = new Set(['image/']);
 const MAX_FILE_SIZE = 1 * 1024 * 1024 * 5;
@@ -56,7 +55,7 @@ export default ({ onTempUploaded }) => {
     return (
         <div className="actable">
             <label htmlFor="upload">
-                <div class="upload-box">
+                <div className="upload-box">
                     {busy ? 'Uploading...' : uploadInterface}
                 </div>
             </label>
